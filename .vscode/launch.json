@@ -17,6 +17,22 @@
             "console": "internalConsole",
             "outputCapture": "std",
             "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "(DC) Launch ioBroker Adapter",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0", "--logs"],
+            "program": "${workspaceFolder}/main.js",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Update Adapter",
+            "request": "launch",
+            "command": "NPM_PACK=$(npm pack) && iob url $(pwd)/$NPM_PACK --debug && rm $NPM_PACK",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
