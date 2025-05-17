@@ -4,19 +4,19 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "default Launch ioBroker Adapter ",
-			"skipFiles": ["<node_internals>/**"],
-			"args": ["--debug", "0"],
-			"program": "node_modules/ioBroker.training/main.js",
-			"cwd": "${workspaceFolder}/.dev-server/default",
-			"stopOnEntry": true,
-			"sourceMaps": true,
-			"console": "internalConsole",
-			"outputCapture": "std",
-			"resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
-		}
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "default Launch ioBroker Adapter ",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.training/main.js",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+            "console": "internalConsole",
+            "outputCapture": "std",
+            "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
+        }
     ]
-}		
+}

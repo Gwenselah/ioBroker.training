@@ -11,15 +11,14 @@ const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
-class Template extends utils.Adapter {
-
+class Training extends utils.Adapter {
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options]
      */
     constructor(options) {
         super({
             ...options,
-            name: 'template',
+            name: 'training',
         });
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
@@ -36,8 +35,8 @@ class Template extends utils.Adapter {
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
-        this.log.info('config option1: ' + this.config.option1);
-        this.log.info('config option2: ' + this.config.option2);
+        this.log.info(`config option1: ${this.config.option1}`);
+        this.log.info(`config option2: ${this.config.option2}`);
 
         /*
         For every state in the system there has to be also an object of type state
@@ -79,14 +78,15 @@ class Template extends utils.Adapter {
 
         // examples for the checkPassword/checkGroup functions
         let result = await this.checkPasswordAsync('admin', 'iobroker');
-        this.log.info('check user admin pw iobroker: ' + result);
+        this.log.info(`check user admin pw iobroker: ${result}`);
 
-        result = await this.checkGroupAsync('admin', 'admin');
-        this.log.info('check group user admin group admin: ' + result);
+        // result = await this.checkGroupAsync('admin', 'admin');
+        this.log.info(`check group user admin group admin: ${result}`);
     }
 
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
+     *
      * @param {() => void} callback
      */
     onUnload(callback) {
@@ -98,7 +98,7 @@ class Template extends utils.Adapter {
             // clearInterval(interval1);
 
             callback();
-        } catch (e) {
+        } catch /* (e) */ {
             callback();
         }
     }
@@ -122,6 +122,7 @@ class Template extends utils.Adapter {
 
     /**
      * Is called if a subscribed state changes
+     *
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
@@ -152,16 +153,15 @@ class Template extends utils.Adapter {
     //         }
     //     }
     // }
-
 }
 
 if (require.main !== module) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options]
      */
-    module.exports = (options) => new Template(options);
+    module.exports = options => new Training(options);
 } else {
     // otherwise start the instance directly
-    new Template();
+    new Training();
 }
