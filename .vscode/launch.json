@@ -24,6 +24,7 @@
             "name": "(DC) Launch ioBroker Adapter",
             "skipFiles": ["<node_internals>/**"],
             "args": ["--debug", "0", "--logs"],
+            "stopOnEntry": true,
             "program": "${workspaceFolder}/main.js",
             "console": "integratedTerminal"
         },
